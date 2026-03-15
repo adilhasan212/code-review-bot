@@ -24,16 +24,16 @@ public class CodeReviewService {
 
         List<String> issues = new ArrayList<>();
 
-        // Best code practices
         if (diffJson == null || diffJson.isEmpty()) {
             issues.add("No code changes detected.");
             return issues;
         }
-  
+        
         if (issues.isEmpty()) {
             issues.add("No obvious issues detected by the bot.");
         }
-
+        
+        // Best code practices
         if (diffJson.contains("System.out.println")) {
             issues.add("Avoid using System.out.println in production code.");
         }
@@ -59,7 +59,8 @@ public class CodeReviewService {
         }
 
         // Security checks
-        if (diffJson.contains("password=") || diffJson.contains("apiKey") || 
+        if (diffJson.contains("password=") || diffJson.contains("password =") ||
+            diffJson.contains("apiKey") || 
             diffJson.contains("secretKey") || diffJson.contains("accessToken") || 
             diffJson.contains("token")) {
             issues.add("Potential sensitive information detected. Ensure no secrets are hardcoded.");
