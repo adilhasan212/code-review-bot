@@ -89,7 +89,7 @@ public class CodeReviewService {
             repoName,
             prNumber,
             issuesSize,
-            String.join(", ", issues),
+            String.join(",\n ", issues),
             LocalDateTime.now()
         );
 
