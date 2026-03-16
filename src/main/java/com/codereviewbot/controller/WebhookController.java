@@ -45,7 +45,7 @@ public class WebhookController {
 
         System.out.println(files);
 
-        List<String> issues = codeReviewService.analyzeDiff(files);
+        List<String> issues = codeReviewService.analyzeDiff(files, repoName, prNumber);
 
         for (String issue : issues) {
             System.out.println("Issue found: " + issue);
